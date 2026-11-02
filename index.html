@@ -1,97 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY FASHION SA & MOZ</title>
+<title>DANNY FASHION SA & MOZ - Alibaba Style</title>
 </head>
-<body style="margin:0;font-family:Arial;background:#fff">
-<div style="background:#000;color:#c00;padding:12px;text-align:center">
-<b style="font-size:18px">DANNY FASHION SA & MOZ</b><br>🇿🇦 🇲🇿
+<body style="margin:0;font-family:Arial;background:#f5f5f5">
+<!-- TOPO ALIBABA LARANJA -->
+<div style="background:#FF6A00;color:#fff;padding:8px 10px;display:flex;justify-content:space-between;font-size:11px">
+<span>🇿🇦 SA | 🇲🇿 MOZ | Envio 2-5 dias</span>
+<span>WhatsApp: +27 65 559 4282</span>
 </div>
 
-<div style="padding:10px">
-<input type="text" placeholder=" Pesquisar produtos..." style="width:100%;padding:12px;border-radius:10px;border:1px solid #ddd;background:#f0f0f0">
+<div style="background:#fff;padding:10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #eee">
+<div style="font-weight:900;color:#FF6A00;font-size:18px;line-height:1">DANNY<br>FASHION</div>
+<div style="flex:1;display:flex;background:#f5f5f5;border:2px solid #FF6A00;border-radius:20px;overflow:hidden">
+<input type="text" id="pesq" placeholder="Pesquisar produtos, fornecedores..." style="flex:1;border:none;background:transparent;padding:10px;outline:none;font-size:13px" onkeyup="filtrar()">
+<button style="background:#FF6A00;color:#fff;border:none;padding:10px 18px;font-weight:bold">🔍</button>
+</div>
+<div style="font-size:20px">🛒</div>
 </div>
 
-<div style="padding:10px;font-weight:bold">Categorias</div>
-<div style="display:flex;gap:6px;padding:0 10px;overflow:auto">
-<div style="background:#111;color:#ff3333;padding:8px 10px;border-radius:12px;font-size:11px;text-align:center;min-width:70px"><b>Fato de treino qualidade</b></div>
-<div style="background:#111;color:#ff3333;padding:8px 10px;border-radius:12px;font-size:11px;text-align:center;min-width:70px"><b>Calças qualidade modelos</b></div>
-<div style="background:#111;color:#ff3333;padding:8px 10px;border-radius:12px;font-size:11px;text-align:center;min-width:70px"><b>Tudo roupa mulheres homens crianças</b></div>
-<div style="background:#111;color:#ff3333;padding:8px 10px;border-radius:12px;font-size:11px;text-align:center;min-width:70px"><b>Sapatos qualidade</b></div>
-<div style="background:#111;color:#ff3333;padding:8px 10px;border-radius:12px;font-size:11px;text-align:center;min-width:70px"><b>Relógios</b></div>
+<!-- CATEGORIAS ALIBABA -->
+<div style="background:#fff;padding:8px 10px;display:flex;gap:15px;overflow:auto;font-size:12px;white-space:nowrap;border-bottom:1px solid #eee">
+<span style="font-weight:bold">Categorias:</span>
+<span onclick="cat('treino')" style="cursor:pointer">Fato treino</span>
+<span onclick="cat('calca')" style="cursor:pointer">Calças</span>
+<span onclick="cat('roupa')" style="cursor:pointer">Roupa mulher/homem/criança</span>
+<span onclick="cat('sapato')" style="cursor:pointer">Sapatos</span>
+<span onclick="cat('relogio')" style="cursor:pointer">Relógios</span>
 </div>
 
-<div style="display:flex;justify-content:space-between;padding:15px 10px;font-weight:bold">
-<span>Produtos em destaque</span><span style="color:#c00;font-size:13px">Ver tudo ></span>
+<div style="background:#fff;margin:8px 0;padding:10px;display:flex;gap:8px;align-items:center">
+<span style="background:#FFE9D6;color:#FF6A00;padding:4px 8px;border-radius:10px;font-size:10px;font-weight:bold">🔥 HOT</span>
+<span style="font-size:12px">Mais de 150.000 modelos • Pronto para envio SA & MOZ</span>
 </div>
 
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 10px">
+<!-- PRODUTOS ESTILO ALIBABA -->
+<div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px">
 
-<div style="border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;box-shadow:0 2px 5px #ddd">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" style="width:100%;height:100px;object-fit:contain">
-<p style="font-size:11px;margin:5px 0"><b>Fato de treino preto</b></p>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#c00;font-size:13px">R 899</b>
-<a href="https://wa.me/27655594282?text=Quero Fato treino R899" style="background:#25D366;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;text-decoration:none">WhatsApp</a>
-</div>
-</div>
-
-<div style="border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;box-shadow:0 2px 5px #ddd">
-<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=200" style="width:100%;height:100px;object-fit:contain">
-<p style="font-size:11px;margin:5px 0"><b>Calças cargo qualidade</b></p>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#c00;font-size:13px">R 649</b>
-<a href="https://wa.me/27655594282?text=Quero Calca R649" style="background:#25D366;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;text-decoration:none">WhatsApp</a>
-</div>
-</div>
-
-<div style="border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;box-shadow:0 2px 5px #ddd">
-<img src="https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=200" style="width:100%;height:100px;object-fit:contain">
-<p style="font-size:11px;margin:5px 0"><b>Vestido mulher estampado</b></p>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#c00;font-size:13px">R 549</b>
-<a href="https://wa.me/27655594282?text=Quero Vestido R549" style="background:#25D366;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;text-decoration:none">WhatsApp</a>
+<div class="prod" data-nome="fato treino preto" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300" style="width:100%;height:140px;object-fit:cover">
+<div style="padding:8px">
+<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Fato de treino preto qualidade premium</p>
+<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 899 <span style="font-size:10px;color:#888">/ 1500MT</span></p>
+<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • Pronto p/ envio</p>
+<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Fornecedor Verificado • Tembisa SA</p>
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Fato treino R899 - Vi no Alibaba style" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div style="border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;box-shadow:0 2px 5px #ddd">
-<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=200" style="width:100%;height:100px;object-fit:contain">
-<p style="font-size:11px;margin:5px 0"><b>Conjunto criança casual</b></p>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#c00;font-size:13px">R 459</b>
-<a href="https://wa.me/27655594282?text=Quero Conjunto R459" style="background:#25D366;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;text-decoration:none">WhatsApp</a>
+<div class="prod" data-nome="calca cargo qualidade" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
+<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300" style="width:100%;height:140px;object-fit:cover">
+<div style="padding:8px">
+<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Calças cargo qualidade - Jeans chino</p>
+<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 649 <span style="font-size:10px;color:#888">/ 1100MT</span></p>
+<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • 30.000 modelos</p>
+<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Fornecedor Verificado</p>
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Calca cargo R649" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div style="border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;box-shadow:0 2px 5px #ddd">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200" style="width:100%;height:100px;object-fit:contain">
-<p style="font-size:11px;margin:5px 0"><b>Sapatos sneaker qualidade</b></p>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#c00;font-size:13px">R 799</b>
-<a href="https://wa.me/27655594282?text=Quero Sapatos R799" style="background:#25D366;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;text-decoration:none">WhatsApp</a>
+<div class="prod" data-nome="vestido mulher estampado" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
+<img src="https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=300" style="width:100%;height:140px;object-fit:cover">
+<div style="padding:8px">
+<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Vestido mulher estampado floral</p>
+<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 549</p>
+<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • Entrega rápida</p>
+<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Ready to Ship</p>
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Vestido R549" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div style="border:1px solid #eee;border-radius:12px;padding:8px;text-align:center;box-shadow:0 2px 5px #ddd">
-<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=200" style="width:100%;height:100px;object-fit:contain">
-<p style="font-size:11px;margin:5px 0"><b>Relógio clássico preto</b></p>
-<div style="display:flex;justify-content:space-between;align-items:center">
-<b style="color:#c00;font-size:13px">R 1.199</b>
-<a href="https://wa.me/27655594282?text=Quero Relogio R1199" style="background:#25D366;color:#fff;padding:4px 8px;border-radius:8px;font-size:10px;text-decoration:none">WhatsApp</a>
+<div class="prod" data-nome="conjunto crianca casual" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
+<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300" style="width:100%;height:140px;object-fit:cover">
+<div style="padding:8px">
+<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Conjunto criança casual inverno</p>
+<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 459</p>
+<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • 50.000 modelos</p>
+<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Qualidade garantida</p>
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Conjunto crianca R459" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+</div>
+</div>
+
+<div class="prod" data-nome="sapatos sneaker qualidade" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" style="width:100%;height:140px;object-fit:cover">
+<div style="padding:8px">
+<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Sapatos sneaker qualidade - Nike</p>
+<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 799</p>
+<p style="font-size:10px;color:#666;margin:0">Min. 1 par • 20.000 modelos</p>
+<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Fornecedor Verificado</p>
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Sapatos R799" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+</div>
+</div>
+
+<div class="prod" data-nome="relogio classico preto" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
+<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=300" style="width:100%;height:140px;object-fit:cover">
+<div style="padding:8px">
+<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Relógio clássico preto premium</p>
+<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 1.199</p>
+<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • 15.000 modelos</p>
+<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Pronto p/ envio</p>
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Relogio R1199" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
 </div>
 </div>
 
 </div>
 
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION" style="display:block;background:#25D366;color:#fff;text-align:center;padding:12px;margin:15px;border-radius:10px;text-decoration:none;font-weight:bold">💬 Fale connosco no WhatsApp<br>+27655594282</a>
-<p style="text-align:center;font-size:9px;color:#666">Entrega SA • MOZ • Pagamento na entrega • Qualidade garantida</p>
-<div style="display:flex;justify-content:space-around;padding:10px;border-top:1px solid #eee;margin-top:10px;font-size:11px;color:#888">
-<div style="color:#c00;text-align:center">🏠<br>Início</div>
-<div style="text-align:center">🛍️<br>Loja</div>
-<div style="text-align:center">❤️<br>Favoritos</div>
-<div style="text-align:center">👤<br>Perfil</div>
+<div style="background:#000;color:#fff;padding:15px;text-align:center;margin-top:10px">
+<a href="https://wa.me/27655594282?text=Ola DANNY FASHION SA & MOZ - Alibaba" style="display:inline-block;background:#25D366;color:#fff;padding:10px 20px;border-radius:20px;text-decoration:none;font-weight:bold">💬 Fale no WhatsApp +27 65 559 4282</a>
+<p style="font-size:10px;color:#aaa;margin-top:8px">Entrega em SA & MOZ • Pagamento na entrega • Trade Assurance • Qualidade garantida</p>
 </div>
+
+<script>
+function filtrar(){
+let t=document.getElementById('pesq').value.toLowerCase();
+document.querySelectorAll('.prod').forEach(p=>{
+p.style.display=p.dataset.nome.includes(t)?'block':'none';
+});
+}
+function cat(c){
+document.getElementById('pesq').value=c;
+filtrar();
+}
+</script>
 </body>
 </html>
