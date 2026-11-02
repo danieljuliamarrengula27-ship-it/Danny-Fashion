@@ -3,51 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY FASHION - Loja Oficial</title>
+<title>DANNY FASHION SA & MOZ</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:Arial}
-.header{background:#111;text-align:center;padding:20px;border-bottom:3px solid #c00;position:sticky;top:0;z-index:10}
-.header h1{color:#c00;font-size:30px}
-.search-box{padding:15px;background:#000;position:sticky;top:95px;z-index:9}
-.search-box input{width:100%;padding:15px 20px;border-radius:30px;border:2px solid #c00;background:#111;color:#fff;font-size:16px}
-.categoria{display:flex;align-items:center;gap:15px;background:#111;border:2px solid #c00;border-radius:20px;padding:15px;margin:10px 15px;cursor:pointer}
-.icon{width:60px;height:60px;background:#c00;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px}
-.produtos{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
-.prod{background:#111;border:1px solid #333;border-radius:15px;padding:10px;text-align:center}
-.prod img{width:100%;height:140px;object-fit:cover;border-radius:10px;background:#222}
-.preco{color:#0f0;font-weight:bold;margin:5px 0}
-.preco2{color:#aaa;font-size:12px}
-.btn{width:100%;background:#25D366;color:#fff;border:none;padding:8px;border-radius:20px;margin-top:5px;font-weight:bold;cursor:pointer}
-.titulo-cat{padding:15px;font-size:20px;color:#c00;text-align:center;display:none}
-</style>
-</head>
-<body>
-<div class="header">
-<h1>🇿🇦 DANNY FASHION 🇲🇿</h1>
-<p>LOJA OFICIAL +27 65 559 4282</p>
-<p>LISTA DE TODO TIPO</p>
-</div>
-
-<div class="search-box">
-<input type="text" id="pesquisa" placeholder="🔍 Pesquisar: calça, Nike, vestido" onkeyup="filtrar()">
-</div>
-
-<div id="categorias">
-<div class="categoria" onclick="mostrar('treino')"><div class="icon">🏃</div><div><h3>Fato de treino</h3><span>25.000 modelos</span></div></div>
-<div class="categoria" onclick="mostrar('calca')"><div class="icon">👖</div><div><h3>Calças</h3><span>Jeans, chino, cargo - 30.000</span></div></div>
-<div class="categoria" onclick="mostrar('roupa')"><div class="icon">👕</div><div><h3>Tudo roupa</h3><span>50.000 modelos</span></div></div>
-<div class="categoria" onclick="mostrar('sapato')"><div class="icon">👟</div><div><h3>Sapatos</h3><span>20.000 modelos</span></div></div>
-<div class="categoria" onclick="mostrar('relogio')"><div class="icon">⌚</div><div><h3>Relógios</h3><span>15.000 modelos</span></div></div>
-</div>
-
-<h2 id="tit" class="titulo-cat"></h2>
-<div id="produtos" class="produtos"></div>
-
-<script>
-const produtos=[
-{n:'Fato Treino Nike Preto',c:'treino',p1:'R350',p2:'1.500MT',img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300'},
-{n:'Fato Treino Adidas Azul',c:'treino',p1:'R380',p2:'1.650MT',img:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300'},
-{n:'Calça Jeans Skinny',c:'calca',p1:'R250',p2:'1.100MT',img:'https://images.unsplash.com/photo-1542272604-787c3835535d?w=300'},
-{n:'Calça Cargo Militar',c:'calca',p1:'R280',p2:'1.250MT',img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300'},
-{n:'Camisa Social
+body{background:#0f0f0f;font-family:Arial;display:flex;justify-content:center}
+.app{width:100%;max-width:420px;background:#fff;min-height:100vh;border-radius:30px 30px 0 0;overflow:hidden;margin:10px;position:relative;padding-bottom:80px}
+.top{background:#000;color:#c00;padding:15px;display:flex;justify-content:space-between;align-items:center}
+.top h1{font-size:18px;text-align:center;line-height:1.1}
+.bandeiras{font-size:20px;text-align:center}
+.search{padding:12px;background:#fff}
+.search input{width:100%;background:#eee;border:none;padding:12px 15px;border-radius:12px;font-size:14px;outline:none}
+.cat-tit{padding:10px 15px;font-weight:bold;font-size:18px}
+.categorias{display:flex;gap:8px;overflow-x:auto;padding:0 10px 10px;white-space:nowrap}
+.categorias::-webkit-scrollbar{display:none}
+.cat{background:#111;color:#ff3b3b;border-radius:15px;padding:10px 12px;font-size:12px;text-align:center;min-width:75px;cursor:pointer;font-weight:bold;line-height:1.2}
+.cat.ativo{background:#c00;color:#fff}
+.prod-tit{display:flex;justify-content:space-between;padding:15px 15px 10px;font-weight:bold}
+.prod-tit span{color:#c00;font-size:14px;cursor:pointer}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 10px}
+.card{background:#fff;border-radius:15px;box-shadow:0 2px 10px rgba(0,0,0,0.1);padding:10px;text-align:center;border:1px solid #eee}
+.card img{width:100%;height:110px;object-fit:contain}
+.card h4{font-size:12px;margin:8px 0 
