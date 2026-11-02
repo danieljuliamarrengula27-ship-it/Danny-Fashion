@@ -3,20 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY FASHION</title>
+<title>DANNY FASHION - Loja Oficial</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;color:#fff;font-family:Arial}
-.header{background:#111;text-align:center;padding:20px;border-bottom:2px solid #c00}
-.header h1{color:#c00;font-size:32px}
-.header p{color:#aaa;margin-top:5px}
-.search-box{padding:15px}
-.search-box input{width:100%;padding:15px 20px;border-radius:30px;border:2px solid #555;background:#111;color:#fff;font-size:16px;outline:none}
+.header{background:#111;text-align:center;padding:20px;border-bottom:3px solid #c00;position:sticky;top:0;z-index:10}
+.header h1{color:#c00;font-size:30px}
+.search-box{padding:15px;background:#000;position:sticky;top:95px;z-index:9}
+.search-box input{width:100%;padding:15px 20px;border-radius:30px;border:2px solid #c00;background:#111;color:#fff;font-size:16px}
 .categoria{display:flex;align-items:center;gap:15px;background:#111;border:2px solid #c00;border-radius:20px;padding:15px;margin:10px 15px;cursor:pointer}
-.categoria:active{background:#222}
-.icon{width:70px;height:70px;background:#c00;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:35px;flex-shrink:0}
-.categoria h3{font-size:16px}
-.categoria span{color:#888;font-size:13px}
+.icon{width:60px;height:60px;background:#c00;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px}
+.produtos{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+.prod{background:#111;border:1px solid #333;border-radius:15px;padding:10px;text-align:center}
+.prod img{width:100%;height:140px;object-fit:cover;border-radius:10px;background:#222}
+.preco{color:#0f0;font-weight:bold;margin:5px 0}
+.preco2{color:#aaa;font-size:12px}
+.btn{width:100%;background:#25D366;color:#fff;border:none;padding:8px;border-radius:20px;margin-top:5px;font-weight:bold;cursor:pointer}
+.titulo-cat{padding:15px;font-size:20px;color:#c00;text-align:center;display:none}
 </style>
 </head>
 <body>
@@ -27,42 +30,24 @@ body{background:#000;color:#fff;font-family:Arial}
 </div>
 
 <div class="search-box">
-<input type="text" id="pesquisa" placeholder="🔍 Pesquisar: calça, vestido, Nike" onkeyup="filtrar()">
+<input type="text" id="pesquisa" placeholder="🔍 Pesquisar: calça, Nike, vestido" onkeyup="filtrar()">
 </div>
 
-<div id="lista">
-<div class="categoria" onclick="abrir('Fato de treino')">
-<div class="icon">🏃</div><div><h3>Fato de treino com qualidade</h3><span>25.000 modelos</span></div>
+<div id="categorias">
+<div class="categoria" onclick="mostrar('treino')"><div class="icon">🏃</div><div><h3>Fato de treino</h3><span>25.000 modelos</span></div></div>
+<div class="categoria" onclick="mostrar('calca')"><div class="icon">👖</div><div><h3>Calças</h3><span>Jeans, chino, cargo - 30.000</span></div></div>
+<div class="categoria" onclick="mostrar('roupa')"><div class="icon">👕</div><div><h3>Tudo roupa</h3><span>50.000 modelos</span></div></div>
+<div class="categoria" onclick="mostrar('sapato')"><div class="icon">👟</div><div><h3>Sapatos</h3><span>20.000 modelos</span></div></div>
+<div class="categoria" onclick="mostrar('relogio')"><div class="icon">⌚</div><div><h3>Relógios</h3><span>15.000 modelos</span></div></div>
 </div>
 
-<div class="categoria" onclick="abrir('Calças')">
-<div class="icon">👖</div><div><h3>Calças de qualidade e modelos</h3><span>Jeans, chino, cargo - 30.000 modelos</span></div>
-</div>
-
-<div class="categoria" onclick="abrir('Roupa mulheres homens crianças')">
-<div class="icon">👨‍👩‍👧‍👦</div><div><h3>Tudo roupa mulheres homens crianças</h3><span>50.000 modelos</span></div>
-</div>
-
-<div class="categoria" onclick="abrir('Sapatos')">
-<div class="icon">👟</div><div><h3>Sapatos de qualidade</h3><span>20.000 modelos</span></div>
-</div>
-
-<div class="categoria" onclick="abrir('Relógios')">
-<div class="icon">⌚</div><div><h3>Relógios</h3><span>15.000 modelos</span></div>
-</div>
-</div>
+<h2 id="tit" class="titulo-cat"></h2>
+<div id="produtos" class="produtos"></div>
 
 <script>
-function filtrar(){
-let txt=document.getElementById('pesquisa').value.toLowerCase();
-document.querySelectorAll('.categoria').forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(txt)?'flex':'none';
-});
-}
-function abrir(nome){
-let msg=encodeURIComponent('Olá Danny Fashion! Quero ver '+nome);
-window.open('https://wa.me/27655594282?text='+msg,'_blank');
-}
-</script>
-</body>
-</html>
+const produtos=[
+{n:'Fato Treino Nike Preto',c:'treino',p1:'R350',p2:'1.500MT',img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300'},
+{n:'Fato Treino Adidas Azul',c:'treino',p1:'R380',p2:'1.650MT',img:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300'},
+{n:'Calça Jeans Skinny',c:'calca',p1:'R250',p2:'1.100MT',img:'https://images.unsplash.com/photo-1542272604-787c3835535d?w=300'},
+{n:'Calça Cargo Militar',c:'calca',p1:'R280',p2:'1.250MT',img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300'},
+{n:'Camisa Social
