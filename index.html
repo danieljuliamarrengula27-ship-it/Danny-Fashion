@@ -1,42 +1,16 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY FASHION SA & MOZ</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial;background:#f4f4f4}
-header{background:#000;color:#fff;padding:18px;text-align:center;position:sticky;top:0;z-index:100}
-header h1{color:#ff0040}
-.hero{background:linear-gradient(135deg,#000,#007749);color:#fff;padding:30px 15px;text-align:center}
-.btn{display:inline-block;background:#ff0040;color:#fff;padding:14px 26px;border-radius:30px;text-decoration:none;font-weight:bold;margin:8px}
-.btn-green{background:#25D366}
-.cat{background:#fff;margin:18px 10px 0;padding:12px;border-left:6px solid #ff0040;font-weight:bold}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.card img{width:100%;height:150px;object-fit:cover}
-.info{padding:10px;text-align:center}
-.info h3{font-size:12px}
-.price{color:#007749;font-weight:bold}
-.price-mz{color:#ff0040;font-size:11px}
-.btn-w{display:block;background:#25D366;color:#fff;padding:7px;border-radius:20px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px}
-footer{background:#000;color:#fff;text-align:center;padding:20px;font-size:12px}
-.support{background:#fff;margin:15px 10px;padding:15px;border-radius:10px;text-align:center;border:2px dashed #007749}
-</style>
-</head>
-<body>
-<header>
-<h1>🇿🇦 DANNY FASHION 🇲🇿</h1>
-<p>LOJA OFICIAL +27 65 559 4282</p>
-</header>
-<div class="hero">
-<h2>SUPORTE QUALIDADE DE MODELOS</h2>
-<p>Tembisa SA - Maputo MZ - Entrega 2 Paises</p>
-<a class="btn" href="https://wa.me/27655594282?text=Ola%20quero%20comprar%20SA">COMPRAR SA</a>
-<a class="btn btn-green" href="https://wa.me/27655594282?text=Ola%20quero%20comprar%20MOZ">COMPRAR MOZ</a>
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DANNY FASHION SA & MOZ - LISTA</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial;background:#0a0a0a;color:#fff}header{background:#000;padding:12px;text-align:center;border-bottom:2px solid #ff0040;position:sticky;top:0;z-index:100}header h1{color:#ff0040;font-size:20px}.search{padding:10px;background:#111;position:sticky;top:54px;z-index:99}.search input{width:100%;padding:12px 15px;border-radius:25px;border:1px solid #ff0040;background:#000;color:#fff}.cat-list{padding:10px}.cat-item{background:#111;border:1px solid #ff0040;border-radius:15px;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:12px;cursor:pointer}.cat-icon{width:50px;height:50px;background:#ff0040;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px}.cat-info h3{font-size:14px}.cat-info p{font-size:11px;color:#aaa}.products{display:none;grid-template-columns:1fr 1fr;gap:8px;padding:10px;background:#f4f4f4}.products.show{display:grid}.card{background:#fff;border-radius:12px;overflow:hidden;color:#000}.card img{width:100%;height:140px;object-fit:cover}.info{padding:8px;text-align:center}.info h3{font-size:11px;height:24px;overflow:hidden}.price{color:#007749;font-weight:bold;font-size:12px}.price-mz{color:#ff0040;font-size:10px}.btn-w{display:block;background:#25D366;color:#fff;padding:6px;border-radius:20px;text-decoration:none;font-size:10px;font-weight:bold;margin-top:4px}.voltar{background:#ff0040;color:#fff;padding:10px;text-align:center;cursor:pointer;margin:10px;border-radius:20px;display:none}.voltar.show{display:block}footer{background:#000;text-align:center;padding:15px;font-size:11px;border-top:2px solid #ff0040}</style></head><body>
+<header><h1>🇿🇦 DANNY FASHION 🇲🇿</h1><p>LOJA OFICIAL +27 65 559 4282 - LISTA DE TODO TIPO</p></header>
+<div class="search"><input id="q" oninput="pesquisar()" placeholder="🔍 Pesquisar por produtos... ex: calça, vestido, Nike"></div>
+<div id="listaCat" class="cat-list">
+<div class="cat-item" onclick="abrirCat('fato')"><div class="cat-icon">🏃</div><div class="cat-info"><h3>Fato de treino com qualidade</h3><p>Conjuntos confortáveis e duradouros - 25.000 modelos</p></div></div>
+<div class="cat-item" onclick="abrirCat('calca')"><div class="cat-icon">👖</div><div class="cat-info"><h3>Calças de qualidade e modelos</h3><p>Jeans, chino, cargo e mais - 30.000 modelos</p></div></div>
+<div class="cat-item" onclick="abrirCat('todos-roupa')"><div class="cat-icon">👨‍👩‍👧‍👦</div><div class="cat-info"><h3>Tudo roupa mulheres homens crianças</h3><p>Moda para toda a família - 50.000 modelos</p></div></div>
+<div class="cat-item" onclick="abrirCat('sapato')"><div class="cat-icon">👟</div><div class="cat-info"><h3>Sapatos de qualidade</h3><p>Casual, desporto, formal - 20.000 modelos</p></div></div>
+<div class="cat-item" onclick="abrirCat('relogio')"><div class="cat-icon">⌚</div><div class="cat-info"><h3>Relógios</h3><p>Analógicos, digitais e estilos - 15.000 modelos</p></div></div>
 </div>
-
-<div class="cat">🔥 FATO DE TREINO COM QUALIDADE</div>
-<div class="products">
-<div class="card"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f"><div class="info"><h3>Fato Nike Tech</h3><div class="price">R899</div><div class="price-mz">5.200MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir +
+<div id="voltarBtn" class="voltar" onclick="voltarLista()">⬅ Voltar para Lista de Categorias</div>
+<div id="boxProd">
+<div id="prod-fato" class="products"><div class="card" data-n="fato nike tech"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f"><div class="info"><h3>Fato Nike Tech</h3><div class="price">R899</div><div class="price-mz">5.200MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir +27655594282</a></div></div><div class="card" data-n="fato adidas"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461"><div class="info"><h3>Fato Adidas</h3><div class="price">R950 | 5.500MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="fato puma"><img src="https://images.unsplash.com/photo-1552902875-9c0c6fe1c85a"><div class="info"><h3>Fato Puma</h3><div class="price">R850 | 4.900MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="fato feminino"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea"><div class="info"><h3>Fato Feminino</h3><div class="price">R799 | 4.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div></div>
+<div id="prod-calca" class="products"><div class="card" data-n="calca jeans skinny qualidade"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d"><div class="info"><h3>Calça Jeans Skinny Qualidade</h3><div class="price">R450 | 2.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="calca cargo militar modelo"><img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec"><div class="info"><h3>Calça Cargo Militar Modelo</h3><div class="price">R499 | 2.900MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="calca legging mulher"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1"><div class="info"><h3>Calça Legging Mulher</h3><div class="price">R299 | 1.700MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="calca jeans mom"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246"><div class="info"><h3>Calça Mom Premium</h3><div class="price">R479 | 2.750MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div></div>
+<div id="prod-todos-roupa" class="products"><div class="card" data-n="vestido longo elegante mulher"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc"><div class="info"><h3>Vestido Longo Mulher</h3><div class="price">R450 | 2.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="blusa cropped mulher"><img src="https://images.unsplash.com/photo-1554568218-0f1715e72254"><div class="info"><h3>Blusa Cropped Mulher</h3><div class="price">R199 | 1.150MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="camiseta premium homem"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"><div class="info"><h3>Camiseta Premium Homem</h3><div class="price">R250 | 1.450MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div><div class="card" data-n="roupa bebe crianca"><img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2"><div class="info"><h3>Roupa Bebê Kit</h3><div class="price">R199 | 1.150MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div></div>
+<div id="prod-sapato" class="products"><div class="card" data-n="sapato nike air max original qualidade"><img src="https://images
