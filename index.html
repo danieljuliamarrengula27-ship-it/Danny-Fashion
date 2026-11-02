@@ -1,14 +1,68 @@
-function pesquisar(){
-  let texto = document.getElementById('pesquisa').value.toLowerCase();
-  // filtra categorias
-  document.querySelectorAll('.categoria').forEach(cat=>{
-    let nome = cat.innerText.toLowerCase();
-    cat.style.display = nome.includes(texto) ? 'block' : 'none';
-  });
-  // filtra produtos também
-  document.querySelectorAll('.produto').forEach(prod=>{
-    let nome = prod.innerText.toLowerCase();
-    prod.style.display = nome.includes(texto) ? 'block' : 'none';
-  });
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DANNY FASHION</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#fff;font-family:Arial}
+.header{background:#111;text-align:center;padding:20px;border-bottom:2px solid #c00}
+.header h1{color:#c00;font-size:32px}
+.header p{color:#aaa;margin-top:5px}
+.search-box{padding:15px}
+.search-box input{width:100%;padding:15px 20px;border-radius:30px;border:2px solid #555;background:#111;color:#fff;font-size:16px;outline:none}
+.categoria{display:flex;align-items:center;gap:15px;background:#111;border:2px solid #c00;border-radius:20px;padding:15px;margin:10px 15px;cursor:pointer}
+.categoria:active{background:#222}
+.icon{width:70px;height:70px;background:#c00;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:35px;flex-shrink:0}
+.categoria h3{font-size:16px}
+.categoria span{color:#888;font-size:13px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🇿🇦 DANNY FASHION 🇲🇿</h1>
+<p>LOJA OFICIAL +27 65 559 4282</p>
+<p>LISTA DE TODO TIPO</p>
+</div>
+
+<div class="search-box">
+<input type="text" id="pesquisa" placeholder="🔍 Pesquisar: calça, vestido, Nike" onkeyup="filtrar()">
+</div>
+
+<div id="lista">
+<div class="categoria" onclick="abrir('Fato de treino')">
+<div class="icon">🏃</div><div><h3>Fato de treino com qualidade</h3><span>25.000 modelos</span></div>
+</div>
+
+<div class="categoria" onclick="abrir('Calças')">
+<div class="icon">👖</div><div><h3>Calças de qualidade e modelos</h3><span>Jeans, chino, cargo - 30.000 modelos</span></div>
+</div>
+
+<div class="categoria" onclick="abrir('Roupa mulheres homens crianças')">
+<div class="icon">👨‍👩‍👧‍👦</div><div><h3>Tudo roupa mulheres homens crianças</h3><span>50.000 modelos</span></div>
+</div>
+
+<div class="categoria" onclick="abrir('Sapatos')">
+<div class="icon">👟</div><div><h3>Sapatos de qualidade</h3><span>20.000 modelos</span></div>
+</div>
+
+<div class="categoria" onclick="abrir('Relógios')">
+<div class="icon">⌚</div><div><h3>Relógios</h3><span>15.000 modelos</span></div>
+</div>
+</div>
+
+<script>
+function filtrar(){
+let txt=document.getElementById('pesquisa').value.toLowerCase();
+document.querySelectorAll('.categoria').forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(txt)?'flex':'none';
+});
 }
-document.getElementById('pesquisa').addEventListener('input', pesquisar);
+function abrir(nome){
+let msg=encodeURIComponent('Olá Danny Fashion! Quero ver '+nome);
+window.open('https://wa.me/27655594282?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>
