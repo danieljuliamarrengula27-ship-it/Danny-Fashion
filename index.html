@@ -2,114 +2,141 @@
 <html lang="pt">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=5.0">
-<title>DANNY FASHION SA & MOZ - Alibaba Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DANNY FASHION SA & MOZ | Official Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+* {margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+body {background:#f5f5f5}
+.top-bar {background:#FF6A00;color:#fff;padding:10px 5%;display:flex;justify-content:space-between;font-size:13px;font-weight:600}
+.header {background:#fff;padding:15px 5%;display:flex;align-items:center;gap:20px;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.logo {font-weight:900;color:#FF6A00;font-size:24px;line-height:1.1;letter-spacing:-1px}
+.search-box {flex:1;display:flex;border:2.5px solid #FF6A00;border-radius:30px;overflow:hidden;background:#fff}
+.search-box input {flex:1;border:none;padding:12px 20px;outline:none;font-size:15px}
+.search-box button {background:#FF6A00;color:#fff;border:none;padding:0 25px;cursor:pointer;font-weight:bold}
+.icons {font-size:22px;display:flex;gap:15px}
+.categories {background:#fff;padding:12px 5%;display:flex;gap:15px;overflow-x:auto;white-space:nowrap;border-top:1px solid #eee;border-bottom:1px solid #eee;font-size:14px}
+.categories span {cursor:pointer;padding:6px 14px;border-radius:20px;background:#f5f5f5}
+.categories span:hover, .categories .active {background:#FF6A00;color:#fff}
+.banner {margin:15px 5%;background:#fff;padding:12px 20px;border-radius:10px;display:flex;align-items:center;gap:10px;font-size:14px;border-left:4px solid #FF6A00}
+.grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:15px;padding:0 5% 30px}
+.card {background:#fff;border-radius:12px;overflow:hidden;border:1px solid #eee;transition:0.2s;cursor:pointer}
+.card:hover {transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,0,0,0.08)}
+.card img {width:100%;height:180px;object-fit:cover}
+.card-body {padding:12px}
+.title {font-size:13px;height:34px;overflow:hidden;color:#222;line-height:1.3}
+.price {color:#FF6A00;font-weight:800;margin:6px 0;font-size:16px}
+.meta {font-size:11px;color:#888}
+.badge {font-size:10px;color:#00B578;margin:4px 0;font-weight:600}
+.btn {display:block;background:#FF6A00;color:#fff;text-align:center;padding:8px;border-radius:20px;text-decoration:none;font-size:12px;font-weight:bold;margin-top:8px}
+.footer {background:#111;color:#fff;padding:30px 5%;text-align:center}
+.whats-btn {display:inline-block;background:#25D366;color:#fff;padding:12px 28px;border-radius:30px;text-decoration:none;font-weight:bold;margin-bottom:15px}
+</style>
 </head>
-<body style="margin:0;font-family:Arial;background:#f9f9f9">
-<!-- TOPO ALIBABA LARANJA -->
-<div style="background:#FF6A00;color:#fff;padding:82px 101px;display:flex;justify-content:space-between;font-size:111px">
-<span>🇿🇦 SA | 🇲🇿 MOZ | Envio 15-30 dias</span>
+<body>
+
+<div class="top-bar">
+<span>🇿🇦 SA | 🇲🇿 MOZ | Envio 15-30 dias | Pagamento na entrega</span>
 <span>WhatsApp: +27 65 559 4282</span>
 </div>
 
-<div style="background:#fff;padding:30px;display:flex;align-items:center;gap:30px;border-bottom:5px solid #eee">
-<div style="font-weight:900;color:#FF6A00;font-size:58px;line-height:2">DANNY<br>FASHION</div>
-<div style="flex:1;display:flex;background:#f5f5f5;border:2px solid #FF6A00;border-radius:20px;overflow:hidden">
-<input type="text" id="pesq" placeholder="Pesquisar produtos, fornecedores..." style="flex:6;border:none;background:transparent;padding:70px;outline:none;font-size:73px" onkeyup="filtrar()">
-<button style="background:#FF6A00;color:#fff;border:none;padding:90px 88px;font-weight:bold">🔍</button>
+<div class="header">
+<div class="logo">DANNY<br>FASHION</div>
+<div class="search-box">
+<input type="text" id="pesq" placeholder="Pesquisar por fato de treino, calças, vestidos..." onkeyup="filtrar()">
+<button onclick="filtrar()">🔍</button>
 </div>
-<div style="font-size:50px">🛒</div>
-</div>
-
-<!-- CATEGORIAS ALIBABA -->
-<div style="background:#fff;padding:8px 80px;display:flex;gap:75px;overflow:auto;font-size:22px;white-space:nowrap;border-bottom:7px solid #eee">
-<span style="font-weight:bold">Categorias:</span>
-<span onclick="cat('treino')" style="cursor:pointer">Fato treino</span>
-<span onclick="cat('calca')" style="cursor:pointer">Calças</span>
-<span onclick="cat('roupa')" style="cursor:pointer">Roupa mulher/homem/criança</span>
-<span onclick="cat('sapato')" style="cursor:pointer">Sapatos</span>
-<span onclick="cat('relogio')" style="cursor:pointer">Relógios</span>
+<div class="icons">🛒 ❤️ 👤</div>
 </div>
 
-<div style="background:#fff;margin:15px 0;padding:80px;display:flex;gap:10px;align-items:center">
-<span style="background:#FFE9D8;color:#FF8A00;padding:8px 8px;border-radius:20px;font-size:20px;font-weight:bold">🔥 HOT</span>
-<span style="font-size:22px">Mais de 150.000 modelos • Pronto para envio SA & MOZ</span>
+<div class="categories">
+<span class="active" onclick="cat('')">Todos</span>
+<span onclick="cat('treino')">Fato Treino</span>
+<span onclick="cat('calca')">Calças</span>
+<span onclick="cat('roupa')">Roupas</span>
+<span onclick="cat('sapato')">Sapatos</span>
+<span onclick="cat('relogio')">Relógios</span>
+<span onclick="cat('crianca')">Crianças</span>
 </div>
 
-<!-- PRODUTOS ESTILO ALIBABA -->
-<div id="grid" style="display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:9px">
-
-<div class="prod" data-nome="fato treino preto" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
-<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300" style="width:100%;height:140px;object-fit:cover">
-<div style="padding:9px">
-<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Fato de treino preto qualidade premium</p>
-<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 899 <span style="font-size:10px;color:#888">/ 1500MT</span></p>
-<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • Pronto p/ envio</p>
-<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Fornecedor Verificado • Tembisa SA</p>
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Fato treino R899 - Vi no Alibaba style" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
-</div>
+<div class="banner">
+<span style="background:#FFE9D8;color:#FF6A00;padding:5px 12px;border-radius:20px;font-weight:bold;font-size:12px">🔥 HOT</span>
+Mais de 150.000 modelos • Fornecedor Verificado • Pronto para envio SA & MOZ
 </div>
 
-<div class="prod" data-nome="calca cargo qualidade" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
-<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300" style="width:100%;height:140px;object-fit:cover">
-<div style="padding:8px">
-<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Calças cargo qualidade - Jeans chino</p>
-<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 649 <span style="font-size:10px;color:#888">/ 1100MT</span></p>
-<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • 30.000 modelos</p>
-<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Fornecedor Verificado</p>
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Calca cargo R649" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+<div id="grid" class="grid">
+
+<div class="prod card" data-nome="fato treino preto">
+<img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400">
+<div class="card-body">
+<p class="title">Fato de treino preto qualidade premium</p>
+<p class="price">R 899 <span style="font-size:11px;color:#888">/ 1500MT</span></p>
+<p class="meta">Min. 1 peça • Pronto p/ envio</p>
+<p class="badge">✓ Fornecedor Verificado • Tembisa SA</p>
+<a class="btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20-%20Quero%20Fato%20treino%20R899">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div class="prod" data-nome="vestido mulher estampado" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
-<img src="https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=300" style="width:100%;height:140px;object-fit:cover">
-<div style="padding:8px">
-<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Vestido mulher estampado floral</p>
-<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 549</p>
-<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • Entrega rápida</p>
-<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Ready to Ship</p>
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Vestido R549" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+<div class="prod card" data-nome="calca cargo qualidade">
+<img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400">
+<div class="card-body">
+<p class="title">Calças cargo qualidade - Jeans chino</p>
+<p class="price">R 649 <span style="font-size:11px;color:#888">/ 1100MT</span></p>
+<p class="meta">Min. 1 peça • 30.000 modelos</p>
+<p class="badge">✓ Fornecedor Verificado</p>
+<a class="btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20-%20Quero%20Calca%20cargo%20R649">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div class="prod" data-nome="conjunto crianca casual" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
-<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300" style="width:100%;height:140px;object-fit:cover">
-<div style="padding:8px">
-<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Conjunto criança casual inverno</p>
-<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 459</p>
-<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • 50.000 modelos</p>
-<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Qualidade garantida</p>
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Conjunto crianca R459" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+<div class="prod card" data-nome="vestido mulher estampado roupa">
+<img src="https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=400">
+<div class="card-body">
+<p class="title">Vestido mulher estampado floral premium</p>
+<p class="price">R 549</p>
+<p class="meta">Min. 1 peça • Entrega rápida</p>
+<p class="badge">✓ Ready to Ship</p>
+<a class="btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20-%20Quero%20Vestido%20R549">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div class="prod" data-nome="sapatos sneaker qualidade" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300" style="width:100%;height:140px;object-fit:cover">
-<div style="padding:8px">
-<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Sapatos sneaker qualidade - Nike</p>
-<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 799</p>
-<p style="font-size:10px;color:#666;margin:0">Min. 1 par • 20.000 modelos</p>
-<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Fornecedor Verificado</p>
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Sapatos R799" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+<div class="prod card" data-nome="conjunto crianca casual roupa">
+<img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400">
+<div class="card-body">
+<p class="title">Conjunto criança casual inverno</p>
+<p class="price">R 459</p>
+<p class="meta">Min. 1 peça • 50.000 modelos</p>
+<p class="badge">✓ Qualidade garantida</p>
+<a class="btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20-%20Quero%20Conjunto%20crianca%20R459">Contactar Fornecedor</a>
 </div>
 </div>
 
-<div class="prod" data-nome="relogio classico preto" style="background:#fff;border-radius:8px;overflow:hidden;border:1px solid #eee">
-<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=300" style="width:100%;height:140px;object-fit:cover">
-<div style="padding:8px">
-<p style="font-size:12px;height:32px;overflow:hidden;margin:0">Relógio clássico preto premium</p>
-<p style="color:#FF6A00;font-weight:900;margin:4px 0;font-size:16px">R 1.199</p>
-<p style="font-size:10px;color:#666;margin:0">Min. 1 peça • 15.000 modelos</p>
-<p style="font-size:10px;color:#00B578;margin:2px 0">✓ Pronto p/ envio</p>
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION - Quero Relogio R1199" style="display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:6px">Contactar Fornecedor</a>
+<div class="prod card" data-nome="sapatos sneaker qualidade sapato">
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400">
+<div class="card-body">
+<p class="title">Sapatos sneaker qualidade - Sport</p>
+<p class="price">R 799</p>
+<p class="meta">Min. 1 par • 20.000 modelos</p>
+<p class="badge">✓ Fornecedor Verificado</p>
+<a class="btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20-%20Quero%20Sapatos%20R799">Contactar Fornecedor</a>
+</div>
+</div>
+
+<div class="prod card" data-nome="relogio classico preto relogio">
+<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400">
+<div class="card-body">
+<p class="title">Relógio clássico preto premium</p>
+<p class="price">R 1.199</p>
+<p class="meta">Min. 1 peça • 15.000 modelos</p>
+<p class="badge">✓ Pronto p/ envio</p>
+<a class="btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20-%20Quero%20Relogio%20R1199">Contactar Fornecedor</a>
 </div>
 </div>
 
 </div>
 
-<div style="background:#000;color:#fff;padding:15px;text-align:center;margin-top:10px">
-<a href="https://wa.me/27655594282?text=Ola DANNY FASHION SA & MOZ - Alibaba" style="display:inline-block;background:#25D366;color:#fff;padding:10px 20px;border-radius:20px;text-decoration:none;font-weight:bold">💬 Fale no WhatsApp +27 65 559 4282</a>
-<p style="font-size:10px;color:#aaa;margin-top:8px">Entrega em SA & MOZ • Pagamento na entrega • Trade Assurance • Qualidade garantida</p>
+<div class="footer">
+<a class="whats-btn" href="https://wa.me/27655594282?text=Ola%20DANNY%20FASHION%20SA%20&%20MOZ">💬 Fale no WhatsApp +27 65 559 4282</a>
+<p style="font-size:12px;color:#aaa">DANNY FASHION SA & MOZ • Entrega em SA & MOZ • Pagamento na entrega • Trade Assurance • Qualidade garantida<br>Tembisa, Gauteng, South Africa</p>
 </div>
 
 <script>
@@ -122,6 +149,8 @@ p.style.display=p.dataset.nome.includes(t)?'block':'none';
 function cat(c){
 document.getElementById('pesq').value=c;
 filtrar();
+document.querySelectorAll('.categories span').forEach(s=>s.classList.remove('active'));
+event.target.classList.add('active');
 }
 </script>
 </body>
