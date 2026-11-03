@@ -3,28 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY - Imagens OK</title>
+<title>DANNY FASHION - Coleção</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#f5f5f5}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;padding:10px 5%}
-.card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee}
-.card img{width:100%;height:150px;object-fit:cover;background:#eee}
+.header{background:#FF6A00;color:#fff;padding:15px;text-align:center;font-weight:900;font-size:20px}
+.filtros{background:#fff;padding:10px;display:flex;gap:6px;overflow:auto}
+.filtros button{padding:8px 14px;border-radius:20px;border:1px solid #ddd;background:#fff;white-space:nowrap;cursor:pointer}
+.filtros button.active{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:10px}
+.card{background:#fff;border-radius:12px;overflow:hidden}
+.card img{width:100%;height:180px;object-fit:cover}
+.info{padding:8px}
+.info h3{font-size:12px;height:30px;overflow:hidden}
+.price{color:#FF6A00;font-weight:800;margin-top:4px}
 </style>
 </head>
 <body>
+
+<div class="header">DANNY FASHION SA & MOZ - R100 a R3000</div>
+
+<div class="filtros">
+<button class="active" onclick="filtrar('todos',this)">Todos</button>
+<button onclick="filtrar('jeans',this)">Jeans</button>
+<button onclick="filtrar('vestido',this)">Vestido</button>
+<button onclick="filtrar('moletom',this)">Moletom</button>
+<button onclick="filtrar('cargo',this)">Cargo</button>
+<button onclick="filtrar('sneaker',this)">Sneaker</button>
+<button onclick="filtrar('bolsa',this)">Bolsa</button>
+</div>
+
 <div id="grid" class="grid"></div>
+
 <script>
-const imagens = [
-"https://picsum.photos/seed/danny1/400/400",
-"https://picsum.photos/seed/danny2/400/400",
-"https://picsum.photos/seed/danny3/400/400",
-"https://picsum.photos/seed/danny4/400/400"
+const produtos = [
+{nome:"T-shirt Básica Preta", tipo:"tshirt", preco:120, img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"},
+{nome:"Calça Cargo Verde Militar", tipo:"cargo", preco:650, img:"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400"},
+{nome:"Jeans Mom Azul Claro", tipo:"jeans", preco:550, img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400"},
+{nome:"Vestido Longo Floral", tipo:"vestido", preco:700, img:"https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=400"},
+{nome:"Moletom Oversize Cinza", tipo:"moletom", preco:450, img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
+{nome:"Sneaker Branco Air", tipo:"sneaker", preco:800, img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"},
+{nome:"Saia Jeans Curta", tipo:"saia", preco:350, img:"https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400"},
+{nome:"Bolsa Transversal Preta", tipo:"bolsa", preco:550, img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400"},
+{nome:"Blazer Feminino Preto", tipo:"blazer", preco:900, img:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400"},
+{nome:"Hoodie com Capuz", tipo:"moletom", preco:500, img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
+{nome:"Jeans Wide Leg", tipo:"jeans", preco:600, img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400"},
+{nome:"Cropped Top Branco", tipo:"blusa", preco:250, img:"https://images.unsplash.com/photo-1554568218-0f1715e72254?w=400"},
+{nome:"Calça Legging Preta", tipo:"legging", preco:280, img:"https://images.unsplash.com/photo-1506629905607-c28aab0d3b5b?w=400"},
+{nome:"Vestido Midi Tubinho", tipo:"vestido", preco:600, img:"https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=400"},
+{nome:"Boné Trucker Preto", tipo:"bone", preco:180, img:"https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400"},
+{nome:"Jaqueta Jeans", tipo:"jaqueta", preco:700, img:"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400"},
+{nome:"Short Cargo", tipo:"short", preco:350, img:"https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400"},
+{nome:"Kit Bebê 5 peças", tipo:"bebe", preco:400, img:"https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400"},
+{nome:"Conjunto Criança", tipo:"crianca", preco:450, img:"https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400"},
+{nome:"Relógio Clássico", tipo:"relogio", preco:1200, img:"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400"}
 ];
-const grid=document.getElementById('grid');
-for(let i=1;i<=20;i++){
-grid.innerHTML+=`<div class="card"><img src="${imagens[i%4]}" onerror="this.src='https://via.placeholder.com/400/FF6A00/fff?text=Roupa'"><div style="padding:7px"><p style="font-size:11px">Produto #${i} R${100+i*20}</p></div></div>`;
+
+const grid = document.getElementById('grid');
+
+function mostrar(lista){
+grid.innerHTML="";
+lista.forEach(p=>{
+grid.innerHTML+=`
+<div class="card">
+<img src="${p.img}" onerror="this.src='https://via.placeholder.com/400?text=${p.tipo}'">
+<div class="info">
+<h3>${p.nome}</h3>
+<div class="price">R ${p.preco}</div>
+<div style="font-size:10px;color:#888">Stock • Min 1 peça</div>
+</div>
+</div>
+`;
+});
 }
+function filtrar(tipo, btn){
+document.querySelectorAll('.filtros button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+if(tipo==='todos') mostrar(produtos);
+else mostrar(produtos.filter(p=>p.tipo===tipo || p.nome.toLowerCase().includes(tipo)));
+}
+mostrar(produtos);
 </script>
 </body>
 </html>
