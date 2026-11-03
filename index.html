@@ -37,9 +37,7 @@ body{background:#f5f5f5}
 </style>
 </head>
 <body>
-
 <div class="top"><span>🇿🇦 SA | 🇲🇿 MOZ | R100 - R3000 | 1000 TIPOS DIFERENTES</span><span>+27 65 559 4282</span></div>
-
 <div class="header">
 <div class="logo">DANNY<br>FASHION</div>
 <button class="cat-toggle" onclick="toggleCat()">☰ Categorias</button>
@@ -54,9 +52,7 @@ body{background:#f5f5f5}
 </div>
 </div>
 </div>
-
 <div id="catPanel" class="cat-panel"></div>
-
 <div class="filtros-preco">
 <span><b id="mostrando">0</b> de <b id="total">1000</b> • <span id="filtroInfo">Todos</span></span>
 <button class="active" onclick="filtrarPreco(100,3000,'Todos',this)">Todos</button>
@@ -65,12 +61,10 @@ body{background:#f5f5f5}
 <button onclick="filtrarPreco(1001,2000,'R1001-2000',this)">R1001-2000</button>
 <button onclick="filtrarPreco(2001,3000,'R2001-3000',this)">R2001-3000</button>
 </div>
-
 <div id="grid" class="grid"></div>
 <button id="btnMore" style="display:block;margin:20px auto;background:#111;color:#fff;padding:12px 30px;border-radius:25px;border:none;font-weight:bold;cursor:pointer" onclick="carregarMais()">Carregar mais 40 ↓</button>
 
 <script>
-// AJUSTADO: 80 TIPOS DIFERENTES REAIS - SEM REPETIR
 const TIPOS_REAIS = [
 {cat:'fato', tipos:["Fato Treino Completo","Moletom Oversize","Hoodie com Capuz","Conjunto Moletom","Jaqueta Bomber"], precoBase: 500},
 {cat:'cargo', tipos:["Calça Cargo Militar","Calça Jogger","Calça Alfaiataria","Short Cargo","Bermuda Cargo"], precoBase: 450},
@@ -86,17 +80,13 @@ const TIPOS_REAIS = [
 {cat:'bebe', tipos:["Vestido Bebê Princesa","Kit Bebê 5 Peças","Body Bebê","Macacão Bebê"], precoBase: 300},
 {cat:'crianca', tipos:["Vestido Infantil","Calça Infantil","Conjunto Inverno Infantil"], precoBase: 350}
 ];
-
 const CATEGORIAS = [...new Set(TIPOS_REAIS.map(t=>t.cat))].map(id=>({id, nome:id.charAt(0).toUpperCase()+id.slice(1)}));
-
 const imagens = [
 "https://picsum.photos/seed/1/400/400","https://picsum.photos/seed/2/400/400",
 "https://picsum.photos/seed/3/400/400","https://picsum.photos/seed/4/400/400",
 "https://picsum.photos/seed/5/400/400","https://picsum.photos/seed/6/400/400",
 "https://picsum.photos/seed/7/400/400","https://picsum.photos/seed/8/400/400"
 ];
-
-// GERA 1000 PRODUTOS DIFERENTES - SEM #1 #2
 let todos = [];
 let contador = 0;
 while(todos.length < 1000){
@@ -107,9 +97,8 @@ let variacaoPreco = Math.floor(Math.random()*800) - 200;
 let preco = grupo.precoBase + variacaoPreco + (contador % 300);
 if(preco < 100) preco = 100 + Math.floor(Math.random()*200);
 if(preco > 3000) preco = 1500 + Math.floor(Math.random()*1400);
-
 todos.push({
-titulo: nomeTipo, // SEM NÚMERO, SÓ TIPO DIFERENTE
+titulo: nomeTipo,
 categoria: grupo.cat,
 preco: preco,
 precoOld: preco + 150 + Math.floor(Math.random()*300),
@@ -119,14 +108,12 @@ contador++;
 });
 });
 }
-
 const chipsSug = document.getElementById('chipsSug');
 const catPanel = document.getElementById('catPanel');
 CATEGORIAS.forEach(c=>{
 chipsSug.innerHTML += `<span class="chip" onclick="usar('${c.id}')">${c.nome}</span>`;
 catPanel.innerHTML += `<span data-cat="${c.id}" onclick="usar('${c.id}')">${c.nome}</span>`;
 });
-
 let filtrados = [...todos];
 let mostrando = 0;
 const porPagina = 40;
@@ -139,7 +126,7 @@ let fim = Math.min(mostrando+porPagina, filtrados.length);
 for(let i=mostrando;i<fim;i++){
 let p = filtrados[i];
 grid.innerHTML+=`
-<div class="prod card">
+<div class="card">
 <img src="${p.img}" loading="lazy" onerror="this.src='https://via.placeholder.com/400/FF6A00/fff?text=${p.categoria}'">
 <div class="body">
 <p class="title">${p.titulo}</p>
@@ -151,4 +138,48 @@ grid.innerHTML+=`
 }
 mostrando=fim;
 document.getElementById('mostrando').innerText=mostrando;
-document
+document.getElementById('total').innerText=filtrados.length;
+document.getElementById('btnMore').style.display = mostrando >= filtrados.length ? 'none' : 'block';
+}
+function toggleCat(){
+document.getElementById('catPanel').classList.toggle('show');
+}
+function abrirSug(){
+document.getElementById('sug').classList.add('show');
+}
+function fecharSug(){
+document.getElementById('sug').classList.remove('show');
+}
+function usar(cat){
+document.getElementById('pesq').value=cat;
+filtrar();
+fecharSug();
+document.querySelectorAll('#catPanel span').forEach(s=>{s.classList.toggle('active', s.dataset.cat===cat)});
+}
+function filtrar(){
+let q = document.getElementById('pesq').value.toLowerCase().trim();
+filtrados = todos.filter(p=>{
+let matchTexto = !q || p.titulo.toLowerCase().includes(q) || p.categoria.toLowerCase().includes(q);
+let matchPreco = p.preco >= filtroPrecoAtivo.min && p.preco <= filtroPrecoAtivo.max;
+return matchTexto && matchPreco;
+});
+document.getElementById('filtroInfo').innerText = q ? q : 'Todos';
+render(true);
+}
+function filtrarPreco(min,max,label,btn){
+filtroPrecoAtivo={min,max};
+document.getElementById('filtroInfo').innerText=label;
+document.querySelectorAll('.filtros-preco button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+filtrar();
+}
+function carregarMais(){
+render(false);
+}
+document.addEventListener('click', function(e){
+if(!e.target.closest('.search-wrap')) fecharSug();
+});
+render(true);
+</script>
+</body>
+</html>
