@@ -27,27 +27,27 @@ body{background:#f5f5f5}
 .filtros-preco button.active{background:#FF6A00;color:#fff;border-color:#FF6A00}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;padding:0 5% 20px}
 .card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee}
-.card img{width:100%;height:150px;object-fit:cover;background:#eee}
+.card img{width:100%;height:180px;object-fit:cover;background:#eee}
 .body{padding:7px}
 .title{font-size:11px;height:32px;overflow:hidden;line-height:1.3;font-weight:600}
 .price{color:#FF6A00;font-weight:800;font-size:12px}
 .price-old{font-size:9px;color:#888;text-decoration:line-through}
 .meta{font-size:9px;color:#888}
-.btn{display:block;background:#FF6A00;color:#fff;text-align:center;padding:5px;border-radius:14px;text-decoration:none;font-size:9px;font-weight:bold;margin-top:4px}
+.btn{display:block;background:#FF6A00;color:#fff;text-align:center;padding:6px;border-radius:14px;text-decoration:none;font-size:10px;font-weight:bold;margin-top:4px}
 </style>
 </head>
 <body>
-<div class="top"><span>🇿🇦 SA | 🇲🇿 MOZ | R100 - R3000 | 1000 TIPOS DIFERENTES</span><span>+27 65 559 4282</span></div>
+<div class="top"><span>🇿🇦 SA | 🇲🇿 MOZ | R100 - R3000 | 1000 TIPOS</span><span>+27 65 559 4282</span></div>
 <div class="header">
 <div class="logo">DANNY<br>FASHION</div>
 <button class="cat-toggle" onclick="toggleCat()">☰ Categorias</button>
 <div class="search-wrap">
 <div class="search-box">
-<input type="text" id="pesq" placeholder="Pesquisar: moletom, mom jeans, vestido..." onfocus="abrirSug()" onkeyup="filtrar()">
+<input type="text" id="pesq" placeholder="Pesquisar: moletom, jeans, vestido..." onfocus="abrirSug()" onkeyup="filtrar()">
 <button onclick="filtrar()">🔍</button>
 </div>
 <div id="sug" class="sugestoes">
-<h4 style="font-size:10px;color:#888;margin-bottom:6px">TIPOS DIFERENTES - SEM REPETIR</h4>
+<h4 style="font-size:10px;color:#888;margin-bottom:6px">TIPOS DIFERENTES</h4>
 <div id="chipsSug"></div>
 </div>
 </div>
@@ -63,7 +63,6 @@ body{background:#f5f5f5}
 </div>
 <div id="grid" class="grid"></div>
 <button id="btnMore" style="display:block;margin:20px auto;background:#111;color:#fff;padding:12px 30px;border-radius:25px;border:none;font-weight:bold;cursor:pointer" onclick="carregarMais()">Carregar mais 40 ↓</button>
-
 <script>
 const TIPOS_REAIS = [
 {cat:'fato', tipos:["Fato Treino Completo","Moletom Oversize","Hoodie com Capuz","Conjunto Moletom","Jaqueta Bomber"], precoBase: 500},
@@ -73,113 +72,4 @@ const TIPOS_REAIS = [
 {cat:'saia', tipos:["Saia Jeans Curta","Saia Longa Plissada","Saia Midi Couro","Saia Lápis"], precoBase: 400},
 {cat:'camisa', tipos:["Camisa Social Slim","Camisa Oversize Xadrez","Camisa Polo","T-shirt Básica","T-shirt Oversize"], precoBase: 300},
 {cat:'blusa', tipos:["Cropped Top","Blusa Ciganinha","Body Colado","Top Academia","Blusa de Lã"], precoBase: 280},
-{cat:'conjunto', tipos:["Conjunto Top + Saia","Conjunto Academia","Pijama Conjunto","Conjunto Criança"], precoBase: 650},
-{cat:'sneaker', tipos:["Sneaker Air Max","Sneaker Casual Branco","Tênis Corrida","Bota Cano Alto","Bota Coturno","Sapato Social","Mocassim","Sandália Salto"], precoBase: 700},
-{cat:'bolsa', tipos:["Bolsa Transversal","Mochila Escolar","Carteira Couro","Cinto Couro","Mochila Executiva"], precoBase: 450},
-{cat:'acessorio', tipos:["Relógio Clássico","Smartwatch","Boné Trucker","Bucket Hat","Meia Longa Kit","Sutiã Push Up","Cueca Box Kit"], precoBase: 200},
-{cat:'bebe', tipos:["Vestido Bebê Princesa","Kit Bebê 5 Peças","Body Bebê","Macacão Bebê"], precoBase: 300},
-{cat:'crianca', tipos:["Vestido Infantil","Calça Infantil","Conjunto Inverno Infantil"], precoBase: 350}
-];
-const CATEGORIAS = [...new Set(TIPOS_REAIS.map(t=>t.cat))].map(id=>({id, nome:id.charAt(0).toUpperCase()+id.slice(1)}));
-const imagens = [
-"https://picsum.photos/seed/1/400/400","https://picsum.photos/seed/2/400/400",
-"https://picsum.photos/seed/3/400/400","https://picsum.photos/seed/4/400/400",
-"https://picsum.photos/seed/5/400/400","https://picsum.photos/seed/6/400/400",
-"https://picsum.photos/seed/7/400/400","https://picsum.photos/seed/8/400/400"
-];
-let todos = [];
-let contador = 0;
-while(todos.length < 1000){
-TIPOS_REAIS.forEach(grupo=>{
-grupo.tipos.forEach(nomeTipo=>{
-if(todos.length >= 1000) return;
-let variacaoPreco = Math.floor(Math.random()*800) - 200;
-let preco = grupo.precoBase + variacaoPreco + (contador % 300);
-if(preco < 100) preco = 100 + Math.floor(Math.random()*200);
-if(preco > 3000) preco = 1500 + Math.floor(Math.random()*1400);
-todos.push({
-titulo: nomeTipo,
-categoria: grupo.cat,
-preco: preco,
-precoOld: preco + 150 + Math.floor(Math.random()*300),
-img: imagens[contador % imagens.length]
-});
-contador++;
-});
-});
-}
-const chipsSug = document.getElementById('chipsSug');
-const catPanel = document.getElementById('catPanel');
-CATEGORIAS.forEach(c=>{
-chipsSug.innerHTML += `<span class="chip" onclick="usar('${c.id}')">${c.nome}</span>`;
-catPanel.innerHTML += `<span data-cat="${c.id}" onclick="usar('${c.id}')">${c.nome}</span>`;
-});
-let filtrados = [...todos];
-let mostrando = 0;
-const porPagina = 40;
-let filtroPrecoAtivo = {min:100,max:3000};
-
-function render(reset=true){
-const grid = document.getElementById('grid');
-if(reset){grid.innerHTML=""; mostrando=0;}
-let fim = Math.min(mostrando+porPagina, filtrados.length);
-for(let i=mostrando;i<fim;i++){
-let p = filtrados[i];
-grid.innerHTML+=`
-<div class="card">
-<img src="${p.img}" loading="lazy" onerror="this.src='https://via.placeholder.com/400/FF6A00/fff?text=${p.categoria}'">
-<div class="body">
-<p class="title">${p.titulo}</p>
-<p class="price">R ${p.preco} <span class="price-old">R ${p.precoOld}</span></p>
-<p class="meta">${p.categoria.toUpperCase()} • R100-R3000</p>
-<a class="btn" href="https://wa.me/27655594282?text=Quero%20${encodeURIComponent(p.titulo)}%20R${p.preco}">Contactar</a>
-</div>
-</div>`;
-}
-mostrando=fim;
-document.getElementById('mostrando').innerText=mostrando;
-document.getElementById('total').innerText=filtrados.length;
-document.getElementById('btnMore').style.display = mostrando >= filtrados.length ? 'none' : 'block';
-}
-function toggleCat(){
-document.getElementById('catPanel').classList.toggle('show');
-}
-function abrirSug(){
-document.getElementById('sug').classList.add('show');
-}
-function fecharSug(){
-document.getElementById('sug').classList.remove('show');
-}
-function usar(cat){
-document.getElementById('pesq').value=cat;
-filtrar();
-fecharSug();
-document.querySelectorAll('#catPanel span').forEach(s=>{s.classList.toggle('active', s.dataset.cat===cat)});
-}
-function filtrar(){
-let q = document.getElementById('pesq').value.toLowerCase().trim();
-filtrados = todos.filter(p=>{
-let matchTexto = !q || p.titulo.toLowerCase().includes(q) || p.categoria.toLowerCase().includes(q);
-let matchPreco = p.preco >= filtroPrecoAtivo.min && p.preco <= filtroPrecoAtivo.max;
-return matchTexto && matchPreco;
-});
-document.getElementById('filtroInfo').innerText = q ? q : 'Todos';
-render(true);
-}
-function filtrarPreco(min,max,label,btn){
-filtroPrecoAtivo={min,max};
-document.getElementById('filtroInfo').innerText=label;
-document.querySelectorAll('.filtros-preco button').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-filtrar();
-}
-function carregarMais(){
-render(false);
-}
-document.addEventListener('click', function(e){
-if(!e.target.closest('.search-wrap')) fecharSug();
-});
-render(true);
-</script>
-</body>
-</html>
+{cat:'conjunto', tipos:["Conjunto Top + Saia","Conjunto Academia","
