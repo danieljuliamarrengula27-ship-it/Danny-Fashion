@@ -3,92 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY FASHION SA & MOZ - 1000+ STOCK</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<title>DANNY FASHION 1000 - Categorias Únicas</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 body{background:#f5f5f5}
 .top{background:#FF6A00;color:#fff;padding:8px 5%;display:flex;justify-content:space-between;font-size:11px;font-weight:700}
-.header{background:#fff;padding:10px 5%;display:flex;gap:8px;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.header{background:#fff;padding:10px 5%;display:flex;gap:8px;align-items:center;position:sticky;top:0;z-index:300;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .logo{font-weight:900;color:#FF6A00;font-size:18px;line-height:1}
 .cat-toggle{background:#111;color:#fff;border:none;padding:9px 12px;border-radius:20px;font-size:11px;font-weight:bold;cursor:pointer}
 .search-wrap{flex:1;position:relative}
 .search-box{display:flex;border:2.5px solid #FF6A00;border-radius:30px;overflow:hidden}
 .search-box input{flex:1;border:none;padding:10px 14px;outline:none;font-size:13px}
 .search-box button{background:#FF6A00;color:#fff;border:none;padding:0 16px;cursor:pointer}
-.cat-panel{display:none;background:#fff;padding:8px 5%;gap:6px;flex-wrap:wrap;border-bottom:1px solid #eee;position:sticky;top:58px;z-index:150}
+.cat-panel{display:none;background:#fff;padding:10px 5%;gap:6px;flex-wrap:wrap;border-bottom:1px solid #eee;position:sticky;top:54px;z-index:200}
 .cat-panel.show{display:flex}
-.cat-panel span{background:#f2f2f2;padding:5px 10px;border-radius:20px;font-size:10px;cursor:pointer;font-weight:600}
-.sugestoes{display:none;position:absolute;top:110%;left:0;right:0;background:#fff;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,.2);padding:10px;z-index:400;max-height:380px;overflow:auto}
+.cat-panel span{background:#f2f2f2;padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer;font-weight:600;border:1px solid #eee}
+.cat-panel span.active{background:#FF6A00;color:#fff;border-color:#FF6A00}
+.sugestoes{display:none;position:absolute;top:110%;left:0;right:0;background:#fff;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,.2);padding:12px;z-index:400;max-height:380px;overflow:auto}
 .sugestoes.show{display:block}
-.chip{display:inline-block;padding:5px 10px;background:#f2f2f2;border-radius:20px;font-size:10px;margin:3px;cursor:pointer;font-weight:600}
+.sugestoes h4{font-size:10px;color:#888;margin:10px 0 5px;text-transform:uppercase}
+.chip{display:inline-block;padding:6px 12px;background:#f2f2f2;border-radius:20px;font-size:11px;margin:3px;cursor:pointer;font-weight:600}
 .chip:hover{background:#FF6A00;color:#fff}
-.banner{margin:8px 5%;background:#fff;padding:8px 12px;border-radius:10px;font-size:11px;border-left:4px solid #FF6A00;display:flex;justify-content:space-between;align-items:center}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;padding:0 5% 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;padding:10px 5%}
 .card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee}
 .card img{width:100%;height:150px;object-fit:cover}
 .body{padding:7px}
-.title{font-size:11px;height:28px;overflow:hidden;line-height:1.3}
-.price{color:#FF6A00;font-weight:800;font-size:12px;margin:2px 0}
+.title{font-size:11px;height:28px;overflow:hidden}
+.price{color:#FF6A00;font-weight:800;font-size:12px}
 .meta{font-size:9px;color:#888}
 .btn{display:block;background:#FF6A00;color:#fff;text-align:center;padding:5px;border-radius:14px;text-decoration:none;font-size:9px;font-weight:bold;margin-top:4px}
-.load-more{display:block;margin:20px auto;background:#111;color:#fff;padding:12px 30px;border-radius:25px;border:none;font-weight:bold;cursor:pointer}
 </style>
 </head>
 <body>
 
-<div class="top"><span>🇿🇦 SA | 🇲🇿 MOZ | 1000+ MODELOS STOCK REAL</span><span>65 559 4282</span></div>
+<div class="top"><span>🇿🇦 SA | 🇲🇿 MOZ | 1000 PRODUTOS • CATEGORIAS ÚNICAS</span><span>+27 65 559 4282</span></div>
 
 <div class="header">
 <div class="logo">DANNY<br>FASHION</div>
-<button class="cat-toggle" onclick="toggleCat()">☰ Categorias</button>
+<button class="cat-toggle" onclick="toggleCat()">☰ Categorias Únicas</button>
 <div class="search-wrap">
 <div class="search-box">
-<input type="text" id="pesq" placeholder="1000 gostos: vestido, Nike..." onfocus="abrirSug()" onkeyup="filtrar()">
+<input type="text" id="pesq" placeholder="Pesquisar em 1000 produtos..." onfocus="abrirSug()" onkeyup="filtrar()">
 <button onclick="filtrar()">🔍</button>
 </div>
 <div id="sug" class="sugestoes">
-<b style="font-size:10px">🔥 1000 GOSTOS - TUDO AQUI DENTRO</b><br>
-<span class="chip" onclick="usar('')">Todos 1000</span>
-<span class="chip" onclick="usar('fato treino')">Fato Treino (120)</span>
-<span class="chip" onclick="usar('calca')">Calças (150)</span>
-<span class="chip" onclick="usar('jeans')">Jeans (130)</span>
-<span class="chip" onclick="usar('vestido')">Vestidos (140)</span>
-<span class="chip" onclick="usar('saia')">Saias (80)</span>
-<span class="chip" onclick="usar('camisa')">Camisas (90)</span>
-<span class="chip" onclick="usar('blusa')">Blusas (70)</span>
-<span class="chip" onclick="usar('conjunto')">Conjuntos (110)</span>
-<span class="chip" onclick="usar('homem')">Homem (350)</span>
-<span class="chip" onclick="usar('mulher')">Mulher (400)</span>
-<span class="chip" onclick="usar('crianca')">Criança (150)</span>
-<span class="chip" onclick="usar('bebe')">Bebê (50)</span>
-<span class="chip" onclick="usar('sneaker')">Sneakers (100)</span>
-<span class="chip" onclick="usar('bota')">Botas (40)</span>
-<span class="chip" onclick="usar('bolsa')">Bolsas (60)</span>
-<span class="chip" onclick="usar('relogio')">Relógios (50)</span>
-<span class="chip" onclick="usar('bone')">Bonés (40)</span>
+<h4>🔥 Gostos únicos - sem repetir</h4>
+<div id="chipsSug"></div>
 </div>
 </div>
 </div>
 
-<div id="catPanel" class="cat-panel">
-<span onclick="usar('')">TODOS 1000</span>
-<span onclick="usar('homem')">👨 Homem 350</span>
-<span onclick="usar('mulher')">👩 Mulher 400</span>
-<span onclick="usar('crianca')">👶 Criança 150</span>
-<span onclick="usar('bebe')">🍼 Bebê 50</span>
-<span onclick="usar('sapato')">👟 Sapatos 140</span>
-</div>
+<div id="catPanel" class="cat-panel"></div>
 
-<div class="banner">
-<span>Mostrando <b id="mostrando">40</b> de <b id="total">1000</b> produtos</span>
-<span id="filtroInfo" style="color:#888">Todos</span>
+<div style="margin:8px 5%;background:#fff;padding:8px 12px;border-radius:10px;font-size:11px;border-left:4px solid #FF6A00">
+Mostrando <b id="mostrando">0</b> de <b id="total">1000</b> • <span id="filtroInfo">Todos</span>
 </div>
 
 <div id="grid" class="grid"></div>
-<button id="btnMore" class="load-more" onclick="carregarMais()">Carregar mais 40 ↓</button>
+<button id="btnMore" style="display:block;margin:20px auto;background:#111;color:#fff;padding:12px 30px;border-radius:25px;border:none;font-weight:bold;cursor:pointer" onclick="carregarMais()">Carregar mais 40 ↓</button>
 
 <script>
+// 1. CATEGORIAS ÚNICAS - NÃO REPETEM
+const CATEGORIAS_UNICAS = [
+{ id: 'fato-treino', nome: 'Fato Treino', icon: '🏃' },
+{ id: 'calca-cargo', nome: 'Calça Cargo', icon: '👖' },
+{ id: 'jeans', nome: 'Jeans', icon: '👖' },
+{ id: 'vestido', nome: 'Vestido', icon: '👗' },
+{ id: 'saia', nome: 'Saia', icon: '👗' },
+{ id: 'camisa', nome: 'Camisa', icon: '👔' },
+{ id: 'blusa', nome: 'Blusa', icon: '👚' },
+{ id: 'conjunto', nome: 'Conjunto', icon: '👘' },
+{ id: 'sneaker', nome: 'Sneaker', icon: '👟' },
+{ id: 'bota', nome: 'Bota', icon: '🥾' },
+{ id: 'sapato', nome: 'Sapato Social', icon: '👞' },
+{ id: 'bolsa', nome: 'Bolsa', icon: '👜' },
+{ id: 'relogio', nome: 'Relógio', icon: '⌚' },
+{ id: 'bone', nome: 'Boné', icon: '🧢' },
+{ id: 'bebe', nome: 'Bebê', icon: '🍼' },
+{ id: 'crianca', nome: 'Criança', icon: '👶' },
+{ id: 'interior', nome: 'Roupa Interior', icon: '🩲' }
+];
+
 const imagens = [
 "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400",
 "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400",
@@ -97,35 +92,32 @@ const imagens = [
 "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400",
 "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400",
 "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400",
-"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400",
-"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400",
-"https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400"
-];
-const nomesBase = [
-["Fato Treino Premium","fato treino homem conjunto","899"],["Calça Cargo 6 Bolsos","calca cargo homem jeans","649"],
-["Jeans Skinny Cintura Alta","jeans mulher calca mulher","499"],["Vestido Floral Longo","vestido mulher","549"],
-["Saia Jeans Curta","saia mulher jeans","359"],["Camisa Social Slim","camisa homem","399"],
-["Blusa Cropped Verão","blusa mulher","299"],["Conjunto Top + Calça","conjunto mulher","699"],
-["Sneaker Nike Air Max","sneaker sapato homem mulher","799"],["Bota Couro Inverno","bota mulher sapato","899"],
-["Bolsa Transversal Couro","bolsa mulher","549"],["Relógio Clássico","relogio","1199"],
-["Kit Bebê 5 Peças","bebe crianca","399"],["Conjunto Criança","crianca","459"],
-["Roupa Interior Kit","interior mulher","299"],["Boné Unissex","bone acessorio","199"]
+"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"
 ];
 
+// Gera 1000 produtos sem repetir categoria no título
 let todosProdutos = [];
 for(let i=1;i<=1000;i++){
-let base = nomesBase[i % nomesBase.length];
-let img = imagens[i % imagens.length];
+let cat = CATEGORIAS_UNICAS[i % CATEGORIAS_UNICAS.length];
 todosProdutos.push({
 id:i,
-titulo:`${base[0]} Modelo #${i}`,
-tags:`${base[1]} modelo ${i}`,
-preco: base[2],
-stock: Math.floor(Math.random()*8000)+200,
-img: img,
-cat: base[1].split(" ")[0]
+titulo:`${cat.nome} Premium Modelo #${i}`,
+categoria: cat.id,
+nomeCat: cat.nome,
+icon: cat.icon,
+preco: 199 + (i % 20)*50,
+stock: 200 + (i % 100)*80,
+img: imagens[i % imagens.length]
 });
 }
+
+// Monta chips e painel SEM REPETIR
+const chipsSug = document.getElementById('chipsSug');
+const catPanel = document.getElementById('catPanel');
+CATEGORIAS_UNICAS.forEach(c=>{
+chipsSug.innerHTML += `<span class="chip" onclick="usar('${c.id}')">${c.icon} ${c.nome}</span>`;
+catPanel.innerHTML += `<span data-cat="${c.id}" onclick="usar('${c.id}')">${c.icon} ${c.nome}</span>`;
+});
 
 let filtrados = [...todosProdutos];
 let mostrando = 0;
@@ -138,44 +130,4 @@ let fim = Math.min(mostrando+porPagina, filtrados.length);
 for(let i=mostrando;i<fim;i++){
 let p = filtrados[i];
 grid.innerHTML+=`
-<div class="prod card" data-nome="${p.tags} ${p.titulo.toLowerCase()}">
-<img src="${p.img}" loading="lazy">
-<div class="body">
-<p class="title">${p.titulo}</p>
-<p class="price">R ${p.preco} <span style="color:#888;font-size:9px">/ ${Math.floor(p.preco*1.7)}MT</span></p>
-<p class="meta">Stock: ${p.stock} • Min. 1</p>
-<a class="btn" href="https://wa.me/27655594282?text=Quero%20${encodeURIComponent(p.titulo)}%20R${p.preco}">Contactar</a>
-</div>
-</div>`;
-}
-mostrando = fim;
-document.getElementById('mostrando').innerText = mostrando;
-document.getElementById('total').innerText = filtrados.length;
-document.getElementById('btnMore').style.display = mostrando >= filtrados.length ? 'none' : 'block';
-}
-
-function carregarMais(){render(false);}
-function toggleCat(){document.getElementById('catPanel').classList.toggle('show');}
-function abrirSug(){document.getElementById('sug').classList.add('show');}
-function usar(t){
-document.getElementById('pesq').value=t;
-filtrar();
-document.getElementById('sug').classList.remove('show');
-document.getElementById('catPanel').classList.remove('show');
-}
-function filtrar(){
-let termo=document.getElementById('pesq').value.toLowerCase().trim();
-if(termo===""){filtrados=[...todosProdutos];}
-else{filtrados=todosProdutos.filter(p=> (p.tags+" "+p.titulo.toLowerCase()).includes(termo));}
-document.getElementById('filtroInfo').innerText = termo==="" ? "Todos" : `Filtro: ${termo}`;
-render(true);
-}
-document.addEventListener('click',e=>{
-if(!e.target.closest('.search-wrap') && !e.target.closest('.cat-toggle')){
-document.getElementById('sug').classList.remove('show');
-}
-});
-render(true);
-</script>
-</body>
-</html>
+<div class="prod card" data-cat="${p.categoria}" data-nome="${p.categoria} ${p
