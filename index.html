@@ -1,145 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DANNY FASHION - 1000 Tipos Diferentes R100-R3000</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f5f5f5}
-.top{background:#FF6A00;color:#fff;padding:8px 5%;font-size:11px;font-weight:700;display:flex;justify-content:space-between}
-.header{background:#fff;padding:10px 5%;display:flex;gap:8px;align-items:center;position:sticky;top:0;z-index:300;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.logo{font-weight:900;color:#FF6A00;font-size:18px;line-height:.9}
-.cat-toggle{background:#111;color:#fff;border:none;padding:9px 12px;border-radius:20px;font-size:11px;font-weight:bold;cursor:pointer}
-.search-wrap{flex:1;position:relative}
-.search-box{display:flex;border:2.5px solid #FF6A00;border-radius:30px;overflow:hidden}
-.search-box input{flex:1;border:none;padding:10px 14px;outline:none;font-size:13px}
-.search-box button{background:#FF6A00;color:#fff;border:none;padding:0 16px;cursor:pointer}
-.cat-panel{display:none;background:#fff;padding:10px 5%;gap:6px;flex-wrap:wrap;border-bottom:1px solid #eee;position:sticky;top:54px;z-index:200}
-.cat-panel.show{display:flex}
-.cat-panel span{background:#f2f2f2;padding:6px 12px;border-radius:20px;font-size:11px;cursor:pointer;font-weight:600}
-.sugestoes{display:none;position:absolute;top:110%;left:0;right:0;background:#fff;border-radius:15px;box-shadow:0 15px 35px rgba(0,0,0,.2);padding:12px;z-index:400;max-height:400px;overflow:auto}
-.sugestoes.show{display:block}
-.chip{display:inline-block;padding:6px 12px;background:#f2f2f2;border-radius:20px;font-size:11px;margin:3px;cursor:pointer;font-weight:600}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;padding:10px 5%}
-.card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #eee}
-.card img{width:100%;height:150px;object-fit:cover}
-.body{padding:7px}
-.title{font-size:11px;height:32px;overflow:hidden;line-height:1.2;font-weight:600}
-.price{color:#FF6A00;font-weight:800;font-size:12px}
-.meta{font-size:9px;color:#888}
-.btn{display:block;background:#FF6A00;color:#fff;text-align:center;padding:5px;border-radius:14px;text-decoration:none;font-size:9px;font-weight:bold;margin-top:4px}
-</style>
-</head>
-<body>
-
-<div class="top"><span>1000 TIPOS DIFERENTES • R100 - R3000</span><span>+27 65 559 4282</span></div>
-
-<div class="header">
-<div class="logo">DANNY<br>FASHION</div>
-<button class="cat-toggle" onclick="toggleCat()">☰ Tipos</button>
-<div class="search-wrap">
-<div class="search-box">
-<input type="text" id="pesq" placeholder="Pesquisar tipo: moletom, legging, mom jeans..." onfocus="abrirSug()" onkeyup="filtrar()">
-<button onclick="filtrar()">🔍</button>
-</div>
-<div id="sug" class="sugestoes"><div id="chipsSug"></div></div>
-</div>
-</div>
-
-<div id="catPanel" class="cat-panel"></div>
-
-<div style="margin:8px 5%;background:#fff;padding:8px 12px;border-radius:10px;font-size:11px;border-left:4px solid #FF6A00">
-<span id="mostrando">0</span> de <span id="total">1000</span> • <span id="filtroInfo">Todos os tipos</span>
-<div style="margin-top:6px">
-<button onclick="filtrarPreco(100,500)" style="padding:4px 10px;border-radius:15px;border:1px solid #ddd;background:#fff;font-size:10px;cursor:pointer">R100-500</button>
-<button onclick="filtrarPreco(501,1000)" style="padding:4px 10px;border-radius:15px;border:1px solid #ddd;background:#fff;font-size:10px;cursor:pointer">R501-1000</button>
-<button onclick="filtrarPreco(1001,2000)" style="padding:4px 10px;border-radius:15px;border:1px solid #ddd;background:#fff;font-size:10px;cursor:pointer">R1001-2000</button>
-<button onclick="filtrarPreco(2001,3000)" style="padding:4px 10px;border-radius:15px;border:1px solid #ddd;background:#fff;font-size:10px;cursor:pointer">R2001-3000</button>
-<button onclick="filtrarPreco(100,3000)" style="padding:4px 10px;border-radius:15px;border:1px solid #FF6A00;background:#FF6A00;color:#fff;font-size:10px;cursor:pointer">Todos</button>
-</div>
-</div>
-
-<div id="grid" class="grid"></div>
-<button id="btnMore" style="display:block;margin:20px auto;background:#111;color:#fff;padding:12px 30px;border-radius:25px;border:none;font-weight:bold;cursor:pointer" onclick="carregarMais()">Ver mais tipos ↓</button>
-
 <script>
-// 80 TIPOS DIFERENTES REAIS DE ROUPA - NÃO É NÚMERO, É TIPO
-const TIPOS_DIFERENTES = [
-{nome:"Fato Treino Completo", cat:"fato", preco:899, img:0}, {nome:"Moletom Oversize", cat:"moletom", preco:459, img:1},
-{nome:"Hoodie com Capuz", cat:"moletom", preco:499, img:1}, {nome:"Calça Cargo Militar", cat:"cargo", preco:649, img:2},
-{nome:"Calça Jogger", cat:"cargo", preco:399, img:2}, {nome:"Jeans Mom High Waist", cat:"jeans", preco:599, img:3},
-{nome:"Jeans Skinny Cintura Alta", cat:"jeans", preco:499, img:3}, {nome:"Jeans Wide Leg", cat:"jeans", preco:649, img:3},
-{nome:"Jeans Ripped Rasgado", cat:"jeans", preco:549, img:3}, {nome:"Calça Legging", cat:"legging", preco:299, img:4},
-{nome:"Calça Alfaiataria", cat:"social", preco:799, img:2}, {nome:"Vestido Longo Floral", cat:"vestido", preco:699, img:5},
-{nome:"Vestido Curto Justo", cat:"vestido", preco:459, img:5}, {nome:"Vestido Midi Tubinho", cat:"vestido", preco:549, img:5},
-{nome:"Vestido de Festa Brilho", cat:"vestido", preco:1299, img:5}, {nome:"Saia Jeans Curta", cat:"saia", preco:359, img:6},
-{nome:"Saia Longa Plissada", cat:"saia", preco:449, img:6}, {nome:"Saia Midi Couro", cat:"saia", preco:599, img:6},
-{nome:"Camisa Social Slim", cat:"camisa", preco:399, img:7}, {nome:"Camisa Oversize Xadrez", cat:"camisa", preco:459, img:7},
-{nome:"Camisa Polo", cat:"camisa", preco:299, img:7}, {nome:"T-shirt Básica", cat:"tshirt", preco:149, img:7},
-{nome:"T-shirt Oversize", cat:"tshirt", preco:199, img:7}, {nome:"Cropped Top", cat:"blusa", preco:249, img:8},
-{nome:"Blusa Ciganinha", cat:"blusa", preco:329, img:8}, {nome:"Blazer Feminino", cat:"blazer", preco:899, img:9},
-{nome:"Blazer Masculino", cat:"blazer", preco:999, img:9}, {nome:"Conjunto Top + Saia", cat:"conjunto", preco:699, img:10},
-{nome:"Conjunto Moletom", cat:"conjunto", preco:799, img:0}, {nome:"Macacão Jeans", cat:"macacao", preco:649, img:3},
-{nome:"Macacão Longo", cat:"macacao", preco:599, img:5}, {nome:"Short Jeans", cat:"short", preco:299, img:6},
-{nome:"Short Cargo", cat:"short", preco:349, img:2}, {nome:"Bermuda Masculina", cat:"short", preco:329, img:2},
-{nome:"Sneaker Air Max", cat:"sneaker", preco:799, img:11}, {nome:"Sneaker Casual Branco", cat:"sneaker", preco:599, img:11},
-{nome:"Tênis Corrida", cat:"sneaker", preco:699, img:11}, {nome:"Bota Cano Alto", cat:"bota", preco:899, img:12},
-{nome:"Bota Coturno", cat:"bota", preco:799, img:12}, {nome:"Sapato Social", cat:"sapato", preco:699, img:13},
-{nome:"Mocassim", cat:"sapato", preco:549, img:13}, {nome:"Sandália Salto", cat:"salto", preco:459, img:12},
-{nome:"Bolsa Transversal", cat:"bolsa", preco:549, img:14}, {nome:"Mochila Escolar", cat:"bolsa", preco:399, img:14},
-{nome:"Carteira Couro", cat:"bolsa", preco:249, img:14}, {nome:"Relógio Clássico", cat:"relogio", preco:1199, img:15},
-{nome:"Smartwatch", cat:"relogio", preco:899, img:15}, {nome:"Boné Trucker", cat:"bone", preco:199, img:7},
-{nome:"Bucket Hat", cat:"bone", preco:179, img:7}, {nome:"Vestido Bebê Princesa", cat:"bebe", preco:299, img:16},
-{nome:"Kit Bebê 5 Peças", cat:"bebe", preco:399, img:16}, {nome:"Conjunto Criança Inverno", cat:"crianca", preco:459, img:17},
-{nome:"Vestido Infantil", cat:"crianca", preco:349, img:17}, {nome:"Roupa Interior Kit 3", cat:"interior", preco:299, img:8},
-{nome:"Sutiã Push Up", cat:"interior", preco:199, img:8}, {nome:"Cueca Box Kit 4", cat:"interior", preco:249, img:7},
-{nome:"Meia Longa Kit", cat:"acessorio", preco:149, img:7}, {nome:"Cinto Couro", cat:"acessorio", preco:199, img:14},
-{nome:"Jaqueta Jeans", cat:"jaqueta", preco:699, img:3}, {nome:"Jaqueta Bomber", cat:"jaqueta", preco:799, img:1},
-{nome:"Jaqueta Couro Sintético", cat:"jaqueta", preco:999, img:9}, {nome:"Kimono Longo", cat:"kimono", preco:399, img:5},
-{nome:"Body Colado", cat:"body", preco:279, img:8}, {nome:"Jardineira Jeans", cat:"jardineira", preco:549, img:3},
-{nome:"Pijama Conjunto", cat:"pijama", preco:329, img:8}, {nome:"Camisola Longa", cat:"camisola", preco:279, img:5},
-{nome:"Top Academia", cat:"sport", preco:199, img:4}, {nome:"Conjunto Academia Legging + Top", cat:"sport", preco:499, img:4}
-];
-
+// IMAGENS QUE FUNCIONAM - Picsum + Unsplash com fallback
 const imagens = [
-"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400",
-"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400",
-"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400",
-"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400",
-"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=400",
-"https://images.unsplash.com/photo-1515372039744-b8f02a3c67ae?w=400",
-"https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=400",
-"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400",
-"https://images.unsplash.com/photo-1554568218-0f1715e72254?w=400",
-"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400",
-"https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400",
-"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
-"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400",
-"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400",
-"https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=400",
-"https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400",
-"https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400",
-"https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=400"
+"https://picsum.photos/400/400?random=1",
+"https://picsum.photos/400/400?random=2",
+"https://picsum.photos/400/400?random=3",
+"https://picsum.photos/400/400?random=4",
+"https://picsum.photos/400/400?random=5",
+"https://picsum.photos/400/400?random=6",
+"https://picsum.photos/400/400?random=7",
+"https://picsum.photos/400/400?random=8",
+"https://picsum.photos/400/400?random=9",
+"https://picsum.photos/400/400?random=10",
+"https://picsum.photos/400/400?random=11",
+"https://picsum.photos/400/400?random=12",
+"https://picsum.photos/400/400?random=13",
+"https://picsum.photos/400/400?random=14",
+"https://picsum.photos/400/400?random=15",
+"https://picsum.photos/400/400?random=16",
+"https://picsum.photos/400/400?random=17",
+"https://picsum.photos/400/400?random=18"
 ];
 
-// GERA 1000 COM TIPOS DIFERENTES - COMBINA TIPO + COR + VARIAÇÃO
-const cores = ["Preto","Branco","Azul","Bege","Rosa","Verde","Cinza","Marrom"];
-let todos = [];
-for(let i=0;i<1000;i++){
-let base = TIPOS_DIFERENTES[i % TIPOS_DIFERENTES.length];
-let cor = cores[i % cores.length];
-let variacao = Math.floor(i / TIPOS_DIFERENTES.length) + 1;
-let precoFinal = base.preco + (variacao-1)*20 + (i % 7)*10; // varia de R100 a R3000
-if(precoFinal < 100) precoFinal = 100 + (i % 50);
-if(precoFinal > 3000) precoFinal = 100 + (i % 2900);
-
-todos.push({
-titulo: `${base.nome} ${cor} ${variacao>1 ? 'V'+variacao : ''}`,
-categoria: base.cat,
-preco: precoFinal,
-img: imagens[base.img]
-});
+// Na hora de criar o card, adiciona onerror
+function render(reset=true){
+const grid=document.getElementById('grid');
+if(reset){grid.innerHTML=""; mostrando=0;}
+let fim=Math.min(mostrando+porPagina, filtrados.length);
+for(let i=mostrando;i<fim;i++){
+let p=filtrados[i];
+grid.innerHTML+=`
+<div class="prod card" data-nome="${p.categoria} ${p.titulo.toLowerCase()}">
+<img src="${p.img}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x400/FF6A00/FFFFFF?text=${encodeURIComponent(p.categoria)}'">
+<div class="body">
+<p class="title">${p.titulo}</p>
+<p class="price">R ${p.preco}</p>
+<p class="meta">${p.categoria.toUpperCase()}</p>
+<a class="btn" href="https://wa.me/27655594282?text=Quero%20${encodeURIComponent(p.titulo)}">Contactar</a>
+</div>
+</div>`;
 }
-
-//
+mostrando=fim;
+document.getElementById('mostrando').innerText=mostrando;
+document.getElementById('total').innerText=filtrados.length;
+}
+</script>
